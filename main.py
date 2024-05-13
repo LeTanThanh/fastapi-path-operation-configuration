@@ -81,3 +81,8 @@ async def create_item(item: Annotated[Item, Body()]):
   - **tags**: a set of unique tag strings for this item
   """
   return item
+
+# Deprecate a path operation
+@app.get("/items", tags = [Tags.items], deprecated=True)
+async def read_items():
+  return []
