@@ -30,9 +30,21 @@ async def create_item(item: Annotated[Item, Body()]):
 class Tags(Enum):
   items = "Items"
 
+"""
 @app.post("/items",
   response_model = Item,
   status_code = status.HTTP_201_CREATED,
   tags = [Tags.items])
+async def create_item(item: Annotated[Item, Body()]):
+  return item
+"""
+
+# Summary and description
+@app.post("/items",
+  response_model = Item,
+  status_code = status.HTTP_201_CREATED,
+  tags = [Tags.items],
+  summary = "Create an item",
+  description = "Create an item with all the information, name, description, price, tax and a set of unique tags")
 async def create_item(item: Annotated[Item, Body()]):
   return item
