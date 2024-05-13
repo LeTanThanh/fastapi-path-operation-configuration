@@ -52,11 +52,24 @@ async def create_item(item: Annotated[Item, Body()]):
 """
 
 # Description from docstring
+"""
 @app.post("/items",
   response_model = Item,
   status_code = status.HTTP_201_CREATED,
   tags = [Tags.items],
   summary = "Create an item")
+async def create_item(item: Annotated[Item, Body()]):
+  return item
+"""
+
+# Response description
+@app.post("/items",
+  response_model = Item,
+  status_code = status.HTTP_201_CREATED,
+  tags = [Tags.items],
+  summary = "Create an item",
+  response_description="The created item"
+)
 async def create_item(item: Annotated[Item, Body()]):
   """
   Create an item with all the information:
